@@ -1,14 +1,14 @@
 type ReportHandler = (metric: { name: string; value: number }) => void;
 
+import { onCLS, onFID, onFCP, onLCP, onTTFB } from 'web-vitals';
+
 const reportWebVitals = (onPerfEntry?: ReportHandler) => {
   if (onPerfEntry && typeof onPerfEntry === 'function') {
-    import('web-vitals').then((webVitals) => {
-      webVitals.onCLS(onPerfEntry);
-      webVitals.onFID(onPerfEntry);
-      webVitals.onFCP(onPerfEntry);
-      webVitals.onLCP(onPerfEntry);
-      webVitals.onTTFB(onPerfEntry);
-    });
+    onCLS(onPerfEntry);
+    onFID(onPerfEntry);
+    onFCP(onPerfEntry);
+    onLCP(onPerfEntry);
+    onTTFB(onPerfEntry);
   }
 };
 
